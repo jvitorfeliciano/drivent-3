@@ -32,7 +32,7 @@ async function getHotels(userId: number) {
   await checkTicket(enrollmentId);
 
   const hotels = await hotelRepository.findMany();
-
+ 
   if (hotels.length === 0) {
     throw notFoundError();
   }

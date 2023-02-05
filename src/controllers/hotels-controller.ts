@@ -9,11 +9,11 @@ export async function getHotels(req: AuthenticatedRequest, res: Response) {
   try {
     const hotels = await hotelService.getHotels(userId);
 
-    res.status(200).send(hotels);
+    res.status(httpStatus.OK).send(hotels);
   } catch (error) {
     if (error.name === "NotFoundError") {
       return res.sendStatus(httpStatus.NOT_FOUND);
-    } else if (error.name === "PaymenteRequiredError") {
+    } else if (error.name === "PaymentRequiredError") {
       return res.sendStatus(httpStatus.PAYMENT_REQUIRED);
     }
   }
