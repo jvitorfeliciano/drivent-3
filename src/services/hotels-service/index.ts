@@ -32,7 +32,7 @@ async function getHotels(userId: number) {
   await checkTicket(enrollmentId);
 
   const hotels = await hotelRepository.findMany();
- 
+
   if (hotels.length === 0) {
     throw notFoundError();
   }
@@ -40,8 +40,23 @@ async function getHotels(userId: number) {
   return hotels;
 }
 
+async function getHotelById(userId: number, hotelId: number) {
+  const enrollmentId = await checkEnrollment(userId);
+
+  await checkTicket(enrollmentId);
+
+  const hotel = await hotelRepository.findUnique(hotelId);
+
+  if (!hotel) {
+    throw notFoundError();
+  }
+  console.log(hotel);
+  return hotel;
+}
+
 const hotelService = {
   getHotels,
+  getHotelById
 };
 
 export default hotelService;
