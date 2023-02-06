@@ -193,7 +193,7 @@ describe("GET /hotels/:hotelId", () => {
   });
 
   describe("when token is valid", () => {
-    it("should respond with 404 when there is no enrollment", async () => {
+    it("should respond with status 404 when there is no enrollment", async () => {
       const hotel = await createHotel();
       const token = await generateValidToken();
 
