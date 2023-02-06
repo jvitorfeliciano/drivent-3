@@ -50,13 +50,13 @@ async function getHotelById(userId: number, hotelId: number) {
   if (!hotel) {
     throw notFoundError();
   }
-  console.log(hotel);
+
   return hotel;
 }
 
 const hotelService = {
   getHotels,
-  getHotelById
+  getHotelById,
 };
 
 export default hotelService;
